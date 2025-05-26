@@ -1,24 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
-    <meta charset="UTF-8">
-    <title>Anime Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>{{ t["title"] }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>📺 My Anime List</h1>
-    <a href="{{ url_for('add_anime') }}">➕ Add Anime</a>
-    <ul>
+<body class="bg-light">
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1>{{ t["title"] }}</h1>
+      <form method="get" class="d-inline">
+        <select name="lang" onchange="this.form.submit()" class="form-select">
+          {% for code in ['en', 'ru'] %}
+            <option value="{{ code }}" {% if lang == code %}selected{% endif %}>{{ code.upper() }}</option>
+          {% endfor %}
+        </select>
+      </form>
+    </div>
+
+    <a href="{{ url_for('add') }}" class="btn btn-primary mb-4">{{ t["add_anime"] }}</a>
+
+    {% if anime_list %}
+      <div class="row row-cols-1 row-cols-md-2 g-4">
         {% for anime in anime_list %}
-        <li>
-            <strong>{{ anime.title }}</strong> — {{ anime.status }} ({{ anime.episodes_watched }}/{{ anime.episodes_total }})  
-            ⭐ {{ anime.score }}
-            <p>{{ anime.notes }}</p>
-            <a href="{{ url_for('delete_anime', index=loop.index0) }}">❌ Delete</a>
-        </li>
-        {% else %}
-        <p>No anime added yet 😢</p>
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">{{ anime.name }}</h5>
+                <p class="card-text">{{ t["watched"] }}: <strong>{{ t["yes"] if anime.watched else t["no"] }}</strong></p>
+                {% if anime.link %}
+                  <a href="{{ anime.link }}" class="btn btn-sm btn-outline-secondary" target="_blank">🔗 {{ t["link"] }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
         {% endfor %}
-    </ul>
+      </div>
+    {% else %}
+      <p class="text-muted">{{ t["no_anime"] }}</p>
+    {% endif %}
+  </div>
 </body>
 </html>

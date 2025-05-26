@@ -1,21 +1,16 @@
 body {
-    font-family: sans-serif;
-    padding: 20px;
-    background-color: #f4f4f4;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-h1 {
-    color: #ff4081;
+.card {
+  border-radius: 1rem;
+  border: none;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.card-title {
+  font-weight: bold;
 }
 
-li {
-    background: white;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-left: 5px solid #ff4081;
+.btn-outline-secondary {
+  font-size: 0.9rem;
 }

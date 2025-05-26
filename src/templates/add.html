@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
-    <meta charset="UTF-8">
-    <title>Add Anime</title>
+  <meta charset="UTF-8">
+  <title>{{ t["add_anime"] }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>➕ Add New Anime</h1>
-    <form method="POST">
-        <label>Title: <input type="text" name="title" required></label><br>
-        <label>Status: 
-            <select name="status">
-                <option>Watching</option>
-                <option>Completed</option>
-                <option>Planned</option>
-                <option>Dropped</option>
-            </select>
-        </label><br>
-        <label>Episodes Watched: <input type="number" name="episodes_watched" value="0"></label><br>
-        <label>Total Episodes: <input type="number" name="episodes_total" value="12"></label><br>
-        <label>Score (1-10): <input type="number" name="score" value="10" min="1" max="10"></label><br>
-        <label>Notes:<br><textarea name="notes" rows="4" cols="40"></textarea></label><br>
-        <button type="submit">Add</button>
+<body class="bg-light">
+  <div class="container py-4">
+    <h1>{{ t["add_anime"] }}</h1>
+    <form method="post" class="mt-3">
+      <div class="mb-3">
+        <label class="form-label">{{ t["name"] }}</label>
+        <input type="text" name="name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">{{ t["watched"] }}</label>
+        <select name="watched" class="form-select">
+          <option value="yes">{{ t["yes"] }}</option>
+          <option value="no">{{ t["no"] }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">{{ t["link"] }}</label>
+        <input type="url" name="link" class="form-control" placeholder="https://example.com">
+      </div>
+      <button type="submit" class="btn btn-success">{{ t["submit"] }}</button>
+      <a href="{{ url_for('index') }}" class="btn btn-secondary">{{ t["back"] }}</a>
     </form>
-    <a href="{{ url_for('index') }}">⬅ Back to list</a>
+  </div>
 </body>
 </html>
