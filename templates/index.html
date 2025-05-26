@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📺 My Anime List</h1>
+    <a href="{{ url_for('add_anime') }}">➕ Add Anime</a>
+    <ul>
+        {% for anime in anime_list %}
+        <li>
+            <strong>{{ anime.title }}</strong> — {{ anime.status }} ({{ anime.episodes_watched }}/{{ anime.episodes_total }})  
+            ⭐ {{ anime.score }}
+            <p>{{ anime.notes }}</p>
+            <a href="{{ url_for('delete_anime', index=loop.index0) }}">❌ Delete</a>
+        </li>
+        {% else %}
+        <p>No anime added yet 😢</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

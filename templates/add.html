@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Anime</title>
+</head>
+<body>
+    <h1>➕ Add New Anime</h1>
+    <form method="POST">
+        <label>Title: <input type="text" name="title" required></label><br>
+        <label>Status: 
+            <select name="status">
+                <option>Watching</option>
+                <option>Completed</option>
+                <option>Planned</option>
+                <option>Dropped</option>
+            </select>
+        </label><br>
+        <label>Episodes Watched: <input type="number" name="episodes_watched" value="0"></label><br>
+        <label>Total Episodes: <input type="number" name="episodes_total" value="12"></label><br>
+        <label>Score (1-10): <input type="number" name="score" value="10" min="1" max="10"></label><br>
+        <label>Notes:<br><textarea name="notes" rows="4" cols="40"></textarea></label><br>
+        <button type="submit">Add</button>
+    </form>
+    <a href="{{ url_for('index') }}">⬅ Back to list</a>
+</body>
+</html>
