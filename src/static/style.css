@@ -1,16 +1,69 @@
 body {
   font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
 }
 
+/* Заголовок */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #343a40;
+}
+
+/* Карточки */
 .card {
   border-radius: 1rem;
   border: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Название аниме */
 .card-title {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #495057;
+  margin-bottom: 1rem;
 }
 
-.btn-outline-secondary {
+/* Кнопки */
+.btn-outline-secondary,
+.btn-outline-primary {
   font-size: 0.9rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-primary:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Форма выбора языка */
+form select.form-select {
+  max-width: 100px;
+  border-radius: 0.5rem;
+}
+
+/* Текст без аниме */
+.text-muted {
+  font-style: italic;
+  color: #6c757d !important;
 }
