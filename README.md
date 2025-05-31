@@ -68,7 +68,7 @@ anime-tracker/
 
 ## 🔒 License
 
-MIT — do whatever you want, just don’t blame me if it breaks :)
+[MIT](LICENSE) — do whatever you want, just don’t blame me if it breaks :)
 
 ---
 
